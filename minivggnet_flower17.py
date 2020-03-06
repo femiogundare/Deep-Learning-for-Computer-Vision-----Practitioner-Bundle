@@ -82,7 +82,7 @@ H = model.fit(
 print('Evaluating the network...')
 predictions = model.predict(X_test, batch_size=32)
 print(classification_report(
-        np.argmax(predictions, axis=1), np.argmax(y_test), target_names=flower_classes)
+        np.argmax(predictions, axis=1), np.argmax(y_test, axis=1), target_names=flower_classes)
 )
 
 
@@ -93,7 +93,7 @@ plt.plot(np.arange(0, 100), H.history["loss"], label = "Training loss")
 plt.plot(np.arange(0, 100), H.history["val_loss"], label = "Validation loss")
 plt.plot(np.arange(0, 100), H.history["accuracy"], label = "Training accuracy")
 plt.plot(np.arange(0, 100), H.history["val_accuracy"], label = "Validation accuracy")
-plt.tltle("Training loss and accuracy")
+plt.title("Training loss and accuracy")
 plt.xlabel("Epochs")
 plt.ylabel("Accuracy")
 plt.legend()
