@@ -35,7 +35,7 @@ lb = LabelBinarizer()
 y_test = lb.fit_transform(y_test)
 
 
-modelPaths = os.path.sep.join([args['model'], '*.model'])
+modelPaths = os.path.sep.join([args['models'], '*.model'])
 modelPaths = list(glob.glob(modelPaths))
 models = []
 
