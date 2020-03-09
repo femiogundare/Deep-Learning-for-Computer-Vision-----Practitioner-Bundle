@@ -73,17 +73,17 @@ for i in range(args['num_models']):
             )
     
     #save the model to disk
-    p = [args['model'], 'model_{}.model'.format(i)]
+    p = [args['models'], 'model_{}.model'.format(i)]
     model.save(os.path.sep.join(p))
     
     #evaluate the model
     predictions = model.predict(X_test, batch_size=64)
     class_report = classification_report(
-            np.argmax(predictions, axis=1), np.argmax(y_test, axis=1), target_names=lb.classes_
+            np.argmax(predictions, axis=1), np.argmax(y_test, axis=1), target_names=labelNames
             )
     
     #save the report to file
-    q = [args['model'], 'model_{}.txt'.format(i)]
+    q = [args['models'], 'model_{}.txt'.format(i)]
     file = os.path.sep.join(q)
     f = open(file, 'w')
     f.write(class_report)
@@ -101,7 +101,7 @@ for i in range(args['num_models']):
     plt.ylabel("Loss/Accuracy")
     plt.legend()
     
-    r = [args['model'], '{model}_{}.png'.format(i)]
+    r = [args['models'], 'model_{}.png'.format(i)]
     plt.savefig(os.path.sep.join(r))
     plt.close()
     
